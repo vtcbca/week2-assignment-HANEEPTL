@@ -1,0 +1,97 @@
+ create table stud
+   ...> (
+   ...>   id int primary key,
+   ...>   name varchar(20)
+   ...> );
+Error: table stud already exists
+sqlite> create table stud
+   ...> (
+   ...>   id int primary key,
+   ...>   name varchar(20)
+   ...> );
+Error: table stud already exists
+sqlite> create table stud1
+   ...> (
+   ...>   id int primary key,
+   ...>   name varchar(20)
+   ...> );
+sqlite> insert into stud1 values(1,"hanee");
+sqlite> insert into stud1 values(2,"heer");
+sqlite> insert into stud1 values(3,"riya");
+sqlite> insert into stud1 values(4,"rinkal");
+sqlite> insert into stud1 values(5,"hardik");
+sqlite> insert into stud1 values(6,"mansi");
+sqlite> insert into stud1 values(7,"payal");
+sqlite> insert into stud1 values(8,"freny");
+sqlite> insert into stud1 values(9,"ishani");
+sqlite> insert into stud1 values(10,"sita");
+sqlite> select * from stud1;
+1|hanee
+2|heer
+3|riya
+4|rinkal
+5|hardik
+6|mansi
+7|payal
+8|freny
+9|ishani
+10|sita
+sqlite>create table stud_details1
+   ...> (
+   ...>    id int,
+   ...>    city varchar(20),
+   ...>    mobileno int,
+   ...>    foreign key(id) references stud1(id)
+   ...> );
+2)Insert minimum 10 records for each table.
+
+sqlite> insert into stud_details1 values(101,"surat",8989898989);
+sqlite> insert into stud_details1 values(102,"bardoli",5656565656);
+sqlite> insert into stud_details1 values(103,"baroda",3434343434);
+sqlite> insert into stud_details1 values(104,"sarbhan",9292929292);
+sqlite> insert into stud_details1 values(105,"mota",8877887788);
+sqlite> insert into stud_details1 values(106,"surat",5656565656);
+sqlite> insert into stud_details1 values(107,"ahemdabad",9900228866);
+sqlite> insert into stud_details1 values(108,"bardoli",3939393939);
+sqlite> insert into stud_details1 values(109,"bhatiya",5678904321);
+sqlite> insert into stud_details1 values(110,"tarsadi",1234567890);
+sqlite> select * from stud_details1;
+101|surat|8989898989
+102|bardoli|5656565656
+103|baroda|3434343434
+104|sarbhan|9292929292
+105|mota|8877887788
+106|surat|5656565656
+107|ahemdabad|9900228866
+108|bardoli|3939393939
+109|bhatiya|5678904321
+110|tarsadi|1234567890
+sqlite>
+3)Display whose student come from the Surat City.
+
+select * from stud_details1 where city="surat";
+101|surat|8989898989
+106|surat|5656565656
+4)Display student details whose city name start with 'B'.
+select * from stud_details1 where city like"b%";
+102|bardoli|5656565656
+103|baroda|3434343434
+108|bardoli|3939393939
+109|bhatiya|5678904321
+5)Update mobileno who are comming from 'Surat'
+ 
+update stud_details1
+   ...> set mobileno=5678698789
+   ...> where city="surat";
+sqlite> select * from stud_details1;
+101|surat|5678698789
+102|bardoli|5656565656
+103|baroda|3434343434
+104|sarbhan|9292929292
+105|mota|8877887788
+106|surat|5678698789
+107|ahemdabad|9900228866
+108|bardoli|3939393939
+109|bhatiya|5678904321
+110|tarsadi|1234567890
+sqlite>
